@@ -1,6 +1,6 @@
 # Kriptotrackers Crowdsale
 
-This is the solidity contract for the Kriptotrackers ICO.
+This is the solidity Crowdsale contract based in OpenZepellin for the Kriptotrackers ICO.
 Kriptotrackers is a DAPP intended to be a reliable source of information about the most important cryptocurrency project aspects, such as Innovation, Economics, Community, Development and Blockchain, more information at https://www.kriptotrackers.com/.
 
 In order to login to the kriptotrackers platform you need the KTS token
