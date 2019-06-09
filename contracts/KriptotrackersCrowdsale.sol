@@ -22,7 +22,7 @@ contract KriptotrackersCrowdsale is Crowdsale,
 	RefundableCrowdsale{
 
 	uint256 public investorMinCap =  500000000000000000; //0.5 ether
-  	uint256 public investorHardCap = 5000000000000000000; // 5 ether
+  	uint256 public investorHardCap = 100000000000000000000; // 100 ether
 	mapping(address => uint256) public contributions;
 
 	enum CrowdsaleStage {PreICO,ICO}
@@ -30,10 +30,15 @@ contract KriptotrackersCrowdsale is Crowdsale,
 	uint256 ico_rate=100;
 	uint256 private currentRate;
 
+	//Fixed emission 1M KTS
 	uint256 public max_emision=1000000*10**18;
+	//Available tokens in the crowdsale
 	uint256 public tokenSaleTokens=650000*10**18;
+	//Bounties tokens
 	uint256 public bountiesTokens=100000*10**18;
+	//Fundation tokens
 	uint256 public fundationTokens=200000*10**18;
+	//Team tokens
 	uint256 public teamTokens=50000*10**18;
 
 	uint256 public preICOTokenAmmount=300*10**18;
@@ -144,6 +149,19 @@ contract KriptotrackersCrowdsale is Crowdsale,
 	        return currentRate.mul(weiAmount);
 	    }
 
+		/**
+	    * @dev Overrides the finalization method in order to do the following actions:
+	    * 
+	    * If the goal is reached:
+	    *		Enable tokens
+	    *		If there are unsold tokens and create a new Simple Crowdsale with 10KTS /1ETH Rate		
+	    * 		Mint the  foundation tokens and create a 2 year timelock contract
+	    *		Mint the bounties token
+	    *		Mint the team tokens
+	    *		Renunce minting
+	    *
+	    * If the goal is not reached just finalize ready to enable refunds 
+	    */
 	    function _finalization() internal {
         if(goalReached()){
         	//Enable tokens
