@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "ajv": "^5.5.2",
+    "ajv": "^6.12.3",
     "dotenv": "^8.0.0",
     "openzeppelin-solidity": "^2.2.0",
     "truffle-hdwallet-provider": "^1.0.9",
